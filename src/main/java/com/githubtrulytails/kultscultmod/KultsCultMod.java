@@ -1,5 +1,8 @@
 package com.githubtrulytails.kultscultmod;
 
+import com.githubtrulytails.kultscultmod.Blocks.ModBlocks;
+import com.githubtrulytails.kultscultmod.items.ModItemGroups;
+import com.githubtrulytails.kultscultmod.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -17,7 +20,10 @@ public class KultsCultMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-
 		LOGGER.info("Hello Fabric world!");
+		ModItemGroups.registerItemGroups();
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
+
 	}
 }
