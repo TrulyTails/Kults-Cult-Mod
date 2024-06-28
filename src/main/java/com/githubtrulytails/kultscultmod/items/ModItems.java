@@ -3,6 +3,7 @@ package com.githubtrulytails.kultscultmod.items;
 import com.githubtrulytails.kultscultmod.KultsCultMod;
 import com.githubtrulytails.kultscultmod.items.item_classes.FollowerShard;
 import com.githubtrulytails.kultscultmod.items.item_classes.RitualBladeItem;
+import com.githubtrulytails.kultscultmod.items.item_classes.RitualShard;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -19,9 +20,13 @@ public static final Item BASIC_ITEM = registerItem("basic_item", new Item(new Fa
     public static final Item FOLLOWER_SHARD = registerItem("follower_shard", new FollowerShard
             (new FabricItemSettings()));
 
+public static final Item RITUAL_SHARD = registerItem("ritual_shard", new RitualShard
+            (new FabricItemSettings()));
 
+
+// when registering a weapon/tool just set the damage and attack speed here rather than the tool material.
     public static final Item RITUAL_DAGGER = registerItem("ritual_dagger", new RitualBladeItem(
-            ModToolMaterials.RITUAL_MATERIAL, 0, 16F, new Item.Settings()));
+            ModToolMaterials.RITUAL_MATERIAL, 10, 16F, new Item.Settings()));
 
 
     private static Item registerItem(String name, Item item) {

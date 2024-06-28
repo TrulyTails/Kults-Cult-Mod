@@ -7,7 +7,10 @@ import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
 
-   RITUAL_MATERIAL(4, 1000, 10f, 10f, 50, ()->Ingredient.ofItems(ModItems.FOLLOWER_SHARD))
+    //it seems like there's no point in defining weapon damage here when we set the damage in ModItems
+    //
+   RITUAL_MATERIAL(4, 1000, 10f, 0f, 50,
+            ()->Ingredient.ofItems(ModItems.FOLLOWER_SHARD)) //next set us comma
 
 
 

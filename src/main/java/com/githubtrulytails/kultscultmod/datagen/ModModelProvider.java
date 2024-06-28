@@ -23,6 +23,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         //for basic held items (not the tools model)
         itemModelGenerator.register(ModItems.FOLLOWER_SHARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RITUAL_SHARD, Models.GENERATED);
 
         //for tools
         itemModelGenerator.register(ModItems.RITUAL_DAGGER, Models.HANDHELD);

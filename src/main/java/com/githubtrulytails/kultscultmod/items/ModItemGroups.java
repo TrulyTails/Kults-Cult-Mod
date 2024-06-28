@@ -19,6 +19,7 @@ public class ModItemGroups {
                     .icon(()->new ItemStack(Items.DIAMOND)).entries((displayContext, entries) -> {
                         //adds items to creative tab
                         entries.add(ModItems.FOLLOWER_SHARD);
+                        entries.add(ModItems.RITUAL_SHARD);
 
                         entries.add(ModItems.RITUAL_DAGGER);
                     }).build());
