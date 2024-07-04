@@ -22,9 +22,14 @@ public class ModItemGroups {
                         entries.add(ModItems.RITUAL_SHARD);
 
                         entries.add(ModItems.RITUAL_DAGGER);
+
+
+                       entries.add(ModItems.RAT_SPAWN_EGG);
                     }).build());
 
     public static void registerItemGroups(){
         KultsCultMod.LOGGER.info("Registering Item Groups for "+ KultsCultMod.MOD_ID);
     }
+
+
 }

@@ -1,10 +1,16 @@
 package com.githubtrulytails.kultscultmod;
 
 import com.githubtrulytails.kultscultmod.Blocks.ModBlocks;
+import com.githubtrulytails.kultscultmod.entity.ModEntities;
+import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import com.githubtrulytails.kultscultmod.items.ModItemGroups;
 import com.githubtrulytails.kultscultmod.items.ModItems;
+import com.githubtrulytails.kultscultmod.world.gen.ModEntitySpawn;
+import com.githubtrulytails.kultscultmod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 // rename class with shift+f6 use caps because class name
@@ -24,6 +30,9 @@ public class KultsCultMod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		FabricDefaultAttributeRegistry.register(ModEntities.RAT, RatEntity.createRatAttributes());
+		ModEntities.registerModEntities();
 
+		ModWorldGeneration.generateModWorldGen();
 	}
 }

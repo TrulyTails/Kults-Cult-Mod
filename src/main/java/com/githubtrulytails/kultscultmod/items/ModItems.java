@@ -1,11 +1,13 @@
 package com.githubtrulytails.kultscultmod.items;
 
 import com.githubtrulytails.kultscultmod.KultsCultMod;
+import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.items.item_classes.FollowerShard;
 import com.githubtrulytails.kultscultmod.items.item_classes.RitualBladeItem;
 import com.githubtrulytails.kultscultmod.items.item_classes.RitualShard;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -15,6 +17,10 @@ public class ModItems {
 
 //register basic item
 public static final Item BASIC_ITEM = registerItem("basic_item", new Item(new FabricItemSettings()));
+
+//add a spawn egg
+ public static final Item RAT_SPAWN_EGG = registerItem("rat_spawn_egg", new SpawnEggItem
+        (ModEntities.RAT, 0xa86518, 0x3b260f, new FabricItemSettings()));
 
 //register class item (please just use this for all items inside of KCM.
     public static final Item FOLLOWER_SHARD = registerItem("follower_shard", new FollowerShard
