@@ -2,6 +2,7 @@ package com.githubtrulytails.kultscultmod.entity;
 
 import com.githubtrulytails.kultscultmod.KultsCultMod;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
+import com.githubtrulytails.kultscultmod.entity.custom.WringEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -26,6 +27,12 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE,RatEntity::new)
                     // entity's hit box size
                     .dimensions(EntityDimensions.fixed(0.5f,0.5f)).build());
+
+
+public static final EntityType<WringEntity> WRING = Registry.register(Registries.ENTITY_TYPE,
+        new Identifier(KultsCultMod.MOD_ID, "wring"),
+        FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, WringEntity::new)
+                .dimensions(EntityDimensions.fixed(3,3)).build());
 
 
     public static void registerModEntities() {

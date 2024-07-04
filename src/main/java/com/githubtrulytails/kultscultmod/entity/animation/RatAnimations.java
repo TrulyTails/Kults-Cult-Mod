@@ -5,7 +5,7 @@ import net.minecraft.client.render.entity.animation.AnimationHelper;
 import net.minecraft.client.render.entity.animation.Keyframe;
 import net.minecraft.client.render.entity.animation.Transformation;
 
-public class ModAnimations {
+public class RatAnimations {
 
     public static final Animation RATIDLEANIMATION = Animation.Builder.create(0.875f).looping()
 .addBoneAnimation("body",

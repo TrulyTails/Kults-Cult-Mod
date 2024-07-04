@@ -1,6 +1,7 @@
-package com.githubtrulytails.kultscultmod.entity.client;
+package com.githubtrulytails.kultscultmod.entity.client.rat;
 
 import com.githubtrulytails.kultscultmod.KultsCultMod;
+import com.githubtrulytails.kultscultmod.entity.client.ModModelLayers;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;

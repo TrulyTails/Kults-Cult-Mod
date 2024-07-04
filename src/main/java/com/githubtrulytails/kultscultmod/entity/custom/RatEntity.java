@@ -41,7 +41,7 @@ public class RatEntity extends AnimalEntity{
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
-public final AnimationState attackAnimationState = new AnimationState();
+    public final AnimationState attackAnimationState = new AnimationState();
     public int attackAnimationTimeout = 0;
 
 

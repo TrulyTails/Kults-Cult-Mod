@@ -7,4 +7,8 @@ import net.minecraft.util.Identifier;
 public class ModModelLayers {
     public static final EntityModelLayer RAT =
             new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"rat"),"main");
+
+
+    public static final EntityModelLayer WRING =
+            new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"wring"),"main");
 }

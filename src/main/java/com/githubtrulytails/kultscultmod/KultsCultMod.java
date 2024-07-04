@@ -3,6 +3,7 @@ package com.githubtrulytails.kultscultmod;
 import com.githubtrulytails.kultscultmod.Blocks.ModBlocks;
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
+import com.githubtrulytails.kultscultmod.entity.custom.WringEntity;
 import com.githubtrulytails.kultscultmod.items.ModItemGroups;
 import com.githubtrulytails.kultscultmod.items.ModItems;
 import com.githubtrulytails.kultscultmod.world.gen.ModEntitySpawn;
@@ -31,6 +32,7 @@ public class KultsCultMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		FabricDefaultAttributeRegistry.register(ModEntities.RAT, RatEntity.createRatAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.WRING, WringEntity.createWringAttributes());
 		ModEntities.registerModEntities();
 
 		ModWorldGeneration.generateModWorldGen();

@@ -35,9 +35,21 @@ public class ModEntitySpawn {
                 ModEntities.RAT, 100, 4, 8);
 
 
+         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK).and(BiomeSelectors.excludeByKey(BiomeKeys.DEEP_DARK)
+        ), SpawnGroup.MONSTER, ModEntities.WRING, 500, 1, 1);
+         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DRIPSTONE_CAVES).and(BiomeSelectors.excludeByKey(BiomeKeys.DEEP_DARK)
+         ), SpawnGroup.MONSTER, ModEntities.WRING, 500, 1, 1);
+         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.BEACH).and(BiomeSelectors.excludeByKey(BiomeKeys.DEEP_DARK)
+         ), SpawnGroup.MONSTER, ModEntities.WRING, 500, 1, 1);
+         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FOREST).and(BiomeSelectors.excludeByKey(BiomeKeys.DEEP_DARK)
+         ), SpawnGroup.MONSTER, ModEntities.WRING, 500, 1, 1);
+
+
 
         SpawnRestriction.register(ModEntities.RAT, SpawnRestriction.Location.NO_RESTRICTIONS,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
+        SpawnRestriction.register(ModEntities.WRING, SpawnRestriction.Location.NO_RESTRICTIONS,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
     }
 
 

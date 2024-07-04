@@ -25,6 +25,8 @@ public class ModItemGroups {
 
 
                        entries.add(ModItems.RAT_SPAWN_EGG);
+                       entries.add(ModItems.WRING_SPAWN_EGG);
+
                     }).build());
 
     public static void registerItemGroups(){

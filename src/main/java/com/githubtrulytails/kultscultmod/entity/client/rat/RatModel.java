@@ -1,6 +1,6 @@
-package com.githubtrulytails.kultscultmod.entity.client;
+package com.githubtrulytails.kultscultmod.entity.client.rat;
 
-import com.githubtrulytails.kultscultmod.entity.animation.ModAnimations;
+import com.githubtrulytails.kultscultmod.entity.animation.RatAnimations;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -43,10 +43,10 @@ public class RatModel<T extends RatEntity> extends SinglePartEntityModel<T> {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 		this.setHeadAngles(netHeadYaw,headPitch);
 
-		this.animateMovement(ModAnimations.RATWALKANIMATION,limbSwing,limbSwingAmount,2f,2.5f);
-		this.updateAnimation(entity.idleAnimationState, ModAnimations.RATIDLEANIMATION, ageInTicks, 1f);
+		this.animateMovement(RatAnimations.RATWALKANIMATION,limbSwing,limbSwingAmount,2f,2.5f);
+		this.updateAnimation(entity.idleAnimationState, RatAnimations.RATIDLEANIMATION, ageInTicks, 1f);
 
-		this.updateAnimation(entity.attackAnimationState, ModAnimations.RATATTACKANIMATION, ageInTicks, 1f);
+		this.updateAnimation(entity.attackAnimationState, RatAnimations.RATATTACKANIMATION, ageInTicks, 1f);
 
 	}
 
