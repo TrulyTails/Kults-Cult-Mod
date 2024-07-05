@@ -15,19 +15,20 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
+import net.minecraft.world.dimension.DimensionType;
 import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.entity.mob.HostileEntity.isSpawnDark;
@@ -157,10 +158,44 @@ public class RatEntity extends AnimalEntity{
         return SoundEvents.ENTITY_BAT_DEATH;
     }
 
-    public static boolean ratSpawnInDark(EntityType<? extends HostileEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+
+
+
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+            return false;
+        } else {
+            DimensionType dimensionType = world.getDimension();
+            int i = dimensionType.monsterSpawnBlockLightLimit();
+            if (i < 15 && world.getLightLevel(LightType.BLOCK, pos) > i) {
+                return true;
+            } else {
+                int j = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+                return j <= dimensionType.monsterSpawnLightTest().get(random);
+            }
+        }
+    }
+
+    public static boolean canMobSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        BlockPos blockPos = pos.down();
+        return spawnReason == SpawnReason.SPAWNER || world.getBlockState(blockPos).allowsSpawning(world, blockPos, type);
+    }
+
+
+    public static boolean ratCanSpawnInDark(EntityType<? extends RatEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getDifficulty() != Difficulty.PEACEFUL
                 && (SpawnReason.isTrialSpawner(spawnReason) || isSpawnDark(world, pos, random))
                 && canMobSpawn(type, world, spawnReason, pos, random);
-
     }
-}
+
+    public static boolean ratSpawnMechanics(EntityType<? extends RatEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getBlockState(pos.down()).isIn(BlockTags.VALID_SPAWN)
+                && isSpawnDark(world, pos, random)
+                && canMobSpawn(type, world, spawnReason, pos, random);
+
+        }
+    }
+
+
+
+
