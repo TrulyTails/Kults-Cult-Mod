@@ -15,6 +15,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
@@ -100,9 +101,38 @@ public class WringEntity extends HostileEntity {
         return SoundEvents.ENTITY_WITHER_HURT;
     }
 
-    @Nullable
+ /*   @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_ELDER_GUARDIAN_DEATH;
+    }*/
+
+    @Override
+    public int getXpToDrop() {
+            this.experiencePoints = (int)((double)this.experiencePoints * 10);
+        return super.getXpToDrop();
     }
+
+    @Override
+    public boolean shouldDropXp() {
+        return true;
+    }
+
+    @Override
+    protected boolean shouldDropLoot() {
+        return true;
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        super.onDeath(damageSource);
+        this.playSound(SoundEvents.ENTITY_ELDER_GUARDIAN_DEATH,1f,1f);
+
+        this.dropItem(Items.STICK);
+
+    }
+
+    public boolean isAngryAt(PlayerEntity player) {
+        return true;
+    }
+
 }
