@@ -2,6 +2,8 @@ package com.githubtrulytails.kultscultmod.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -14,6 +16,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
+
+    public static final TagKey<Block> RAT_SPAWNABLE = TagKey.of(RegistryKeys.BLOCK, Identifier.of("kultscultmod", "rat_spawnable"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -45,6 +49,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
         ;// end diamond tool
+
 
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric","needs_tool_level_4")))
         //.add(ModBlocks.[BLOCK])

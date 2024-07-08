@@ -2,6 +2,9 @@ package com.githubtrulytails.kultscultmod.entity.custom;
 
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.entity.ai.RatAttackGoal;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.JumpControl;
 import net.minecraft.entity.ai.goal.*;
@@ -17,7 +20,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.recipe.Ingredient;
@@ -27,7 +29,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
-import net.minecraft.world.dimension.DimensionType;
 import org.jetbrains.annotations.Nullable;
 
 
@@ -89,10 +90,12 @@ public class RatEntity extends AnimalEntity {
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new RatAttackGoal(this, 1d, true));
-        this.goalSelector.add(1, new AnimalMateGoal(this, 1.5D));
         this.goalSelector.add(1, new EscapeDangerGoal(this, 1.0));
+
         this.goalSelector.add(2, new TemptGoal(this, 1.5, Ingredient.ofItems(Items.ROTTEN_FLESH), false));
+        this.goalSelector.add(3, new AnimalMateGoal(this, 1.5D));
         this.goalSelector.add(3, new FollowParentGoal(this, 1.15D));
+
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 1D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -142,7 +145,7 @@ public class RatEntity extends AnimalEntity {
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return ModEntities.RAT.create(world);
+       return ModEntities.RAT.create(world);
     }
 
     @Nullable
@@ -165,83 +168,165 @@ public class RatEntity extends AnimalEntity {
 
 
 //spawn stuff
-
-
- /*   public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.BLOCK, pos) <= 8) {
-            return true;
-        }
-        if (world.getLightLevel(LightType.SKY, pos) <= 8) {
-           return true;
-            } else {
-                DimensionType dimensionType = world.getDimension();
-                int j = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-                return j <= dimensionType.monsterSpawnLightTest().get(random);
-            }
-        }
-*/
-
-
-public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
-    // Check sky light level. Sky light will always be 15. Change random int, lower means higher chance of spawning.
-    int skyLightLevel = world.getLightLevel(LightType.SKY, pos);
-    if (skyLightLevel < random.nextInt(65)) {
-        return false;
+/*@Override     this lets us decide favor of blocks should we want to do so. might use it one day.
+public float getPathfindingFavor(BlockPos pos, WorldView world) {
+    BlockState blockStateBelow = world.getBlockState(pos.down());
+    if (blockStateBelow.isOf(Blocks.GRASS_BLOCK)) {
+        return 10.0F; // High favor for grass block
+    } else if (blockStateBelow.isOf(Blocks.STONE) || blockStateBelow.isOf(Blocks.DIRT) ||
+               blockStateBelow.isOf(Blocks.COBBLESTONE) || blockStateBelow.isOf(Blocks.ANDESITE) ||
+               blockStateBelow.isOf(Blocks.DIORITE) || blockStateBelow.isOf(Blocks.GRANITE) ||
+               blockStateBelow.isOf(Blocks.GRAVEL) || blockStateBelow.isOf(Blocks.SAND) ||
+               blockStateBelow.isOf(Blocks.DEEPSLATE) || blockStateBelow.isOf(Blocks.TUFF) ||
+               blockStateBelow.isOf(Blocks.CLAY) || blockStateBelow.isOf(Blocks.PODZOL) ||
+               blockStateBelow.isOf(Blocks.MYCELIUM) || blockStateBelow.isOf(Blocks.RED_SAND) ||
+               blockStateBelow.isOf(Blocks.NETHERRACK) || blockStateBelow.isOf(Blocks.BASALT) ||
+               blockStateBelow.isOf(Blocks.BLACKSTONE) || blockStateBelow.isOf(Blocks.CRIMSON_NYLIUM) ||
+               blockStateBelow.isOf(Blocks.WARPED_NYLIUM) || blockStateBelow.isOf(Blocks.MOSS_BLOCK) ||
+               blockStateBelow.isOf(Blocks.MOSSY_COBBLESTONE) || blockStateBelow.isOf(Blocks.MOSSY_STONE_BRICKS)) {
+        return 5.0F; // Neutral favor for other valid blocks
     } else {
-        // Check block light level.
-        int blockLightLevel = world.getLightLevel(LightType.BLOCK, pos);
-        if (blockLightLevel > 8) {
-            return false;
-        } else {
-            // Check thundering condition for light level
-            int lightLevel = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-            return lightLevel <= 8; // Ensure light level is 8 or below
-        }
+        return 0.0F; // Low favor for all other blocks
     }
 }
+ */
 
+    //for some reason the pathfinding also means spawning. by default, it is only grassblock
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        int blockLightLevel = world.getLightLevel(LightType.BLOCK, pos);
+        //int skyLightLevel = world.getLightLevel(LightType.SKY, pos);
+       // float skyLightFavor = 15.0F - skyLightLevel + 2;
+      //  float lightFavor = 15.0F - blockLightLevel; // Normally this would add 15 to our return block favored. but it subtracts the current light level.
+        // if the light level is 7. 15-7 =8 + return F = 9. Higher return means higher favor.
+        return 1.0F ;//+ lightFavor; //+ skyLightFavor; // Neutral favor for all blocks
+    }
 
- /*   public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
-            return false;
-        } else {
-            DimensionType dimensionType = world.getDimension();
-            int i = dimensionType.monsterSpawnBlockLightLimit();
-            if (i < 15 && world.getLightLevel(LightType.BLOCK, pos) > i) {
+    /* default isspawndark method hostilemob
+      public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+            if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
                 return false;
             } else {
-                int j = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-                return j <= dimensionType.monsterSpawnLightTest().get(random);
+                DimensionType dimensionType = world.getDimension();
+                int i = dimensionType.monsterSpawnBlockLightLimit();
+                if (i < 15 && world.getLightLevel(LightType.BLOCK, pos) > i) {
+                    return false;
+                } else {
+                    int j = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+                    return j <= dimensionType.monsterSpawnLightTest().get(random);
+                }
+            }
+        }*/
+    public static boolean isNightTime() {
+        var client = MinecraftClient.getInstance();
+
+        long timeOfDay = client.world.getTime() % 24000;
+        boolean isNightTime = timeOfDay > 13187; // Roughly between 13187 and 22812 is night time
+
+        return isNightTime;
+    }
+
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+        // Check sky light level. Sky light will always be 15. Change random int, lower means higher chance of spawning.
+        int blockLightLevel = world.getLightLevel(LightType.BLOCK, pos);
+        int skyLightLevel = world.getLightLevel(LightType.SKY, pos);
+        int lightLevelToSpawnUnder = 7;
+        int skyLightLevelToSpawnUnder= 10;
+
+        if (skyLightLevel > random.nextInt(20)) {
+            return false;
+        } else {
+            if (blockLightLevel >= lightLevelToSpawnUnder) {
+                return false;
+            } else {
+                // Check thundering condition for light level
+                int lightLevel = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+                return lightLevel <= lightLevelToSpawnUnder; // Ensure light level is 8 or below
             }
         }
-    }*/
+    }
+    /*  public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+            if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+                return false;
+            } else {
+                DimensionType dimensionType = world.getDimension();
+                int i = dimensionType.monsterSpawnBlockLightLimit();
+                if (i < 15 && world.getLightLevel(LightType.BLOCK, pos) > i) {
+                    return false;
+                } else {
+                    int j = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+                    return j <= dimensionType.monsterSpawnLightTest().get(random);
+                }
+            }
+        }*/
+  /*  public static boolean validRatSpawn( WorldAccess world, BlockPos pos) {
+        BlockPos[] positionsToCheck = {
+                pos.down(), pos.down().north(), pos.down().south(), pos.down().east(), pos.down().west()
+        };
 
-    public static boolean canMobSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        for (BlockPos checkPos : positionsToCheck) {
+            BlockState blockStateBelow = world.getBlockState(checkPos);
+            boolean isValid = blockStateBelow.isOf(Blocks.STONE) || blockStateBelow.isOf(Blocks.DIRT) ||
+                    blockStateBelow.isOf(Blocks.GRASS_BLOCK) || blockStateBelow.isOf(Blocks.COBBLESTONE) ||
+                    blockStateBelow.isOf(Blocks.ANDESITE) || blockStateBelow.isOf(Blocks.DIORITE) ||
+                    blockStateBelow.isOf(Blocks.GRANITE) || blockStateBelow.isOf(Blocks.GRAVEL) ||
+                    blockStateBelow.isOf(Blocks.SAND) || blockStateBelow.isOf(Blocks.DEEPSLATE) ||
+                    blockStateBelow.isOf(Blocks.TUFF) || blockStateBelow.isOf(Blocks.CLAY) ||
+                    blockStateBelow.isOf(Blocks.PODZOL) || blockStateBelow.isOf(Blocks.MYCELIUM) ||
+                    blockStateBelow.isOf(Blocks.RED_SAND) || blockStateBelow.isOf(Blocks.NETHERRACK) ||
+                    blockStateBelow.isOf(Blocks.BASALT) || blockStateBelow.isOf(Blocks.BLACKSTONE) ||
+                    blockStateBelow.isOf(Blocks.CRIMSON_NYLIUM) || blockStateBelow.isOf(Blocks.WARPED_NYLIUM) ||
+                    blockStateBelow.isOf(Blocks.MOSS_BLOCK) || blockStateBelow.isOf(Blocks.MOSSY_COBBLESTONE) ||
+                    blockStateBelow.isOf(Blocks.MOSSY_STONE_BRICKS);
+
+            if (isValid) {
+                return true;
+            }
+        }
+        return false;
+    }
+*/
+    public static boolean validRatSpawn(WorldAccess world, BlockPos pos) {
+        BlockPos[] positionsToCheck = {
+                pos.down(), pos.down().north(), pos.down().south(), pos.down().east(), pos.down().west()
+        };
+
+        for (BlockPos checkPos : positionsToCheck) {
+            BlockState blockStateBelow = world.getBlockState(checkPos);
+            boolean isValid = blockStateBelow.isSolidBlock(world, checkPos);
+            if (isValid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean ratCanMobSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, net.minecraft.util.math.random.Random random) {
         BlockPos blockPos = pos.down();
         return spawnReason == SpawnReason.SPAWNER || world.getBlockState(blockPos).allowsSpawning(world, blockPos, type);
     }
 
+
     // what gets called in ModEntitySpawn
-    public static boolean ratSpawnMechanics(EntityType<? extends RatEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return isSpawnDark(world, pos, random) && canMobSpawn(type, world, spawnReason, pos, random);
+    public static boolean ratSpawnMechanics(EntityType<? extends RatEntity> type,
+                                            ServerWorldAccess world,
+                                            SpawnReason spawnReason,
+                                            BlockPos pos, net.minecraft.util.math.random.Random random) {
+
+        boolean darkenough = isSpawnDark(world, pos, random);
+        boolean validRatSpawn = validRatSpawn( world, pos);
+        BlockPos blockPos = pos.down();
+
+
+        BlockPos blockPosBelow = pos.down();
+        BlockState blockStateBelow = world.getBlockState(blockPosBelow);
+        Block blockBelow = blockStateBelow.getBlock();
+        //      use to output block and light checks
+       // System.out.println("Checking rat spawn on " + blockBelow + " at: "+pos+ " isDark=" + darkenough + ", canSpawnOnBlock=" + validRatSpawn + " Has reason: " + spawnReason);
+
+        return isSpawnDark(world, pos, random) &&  ratCanMobSpawn(type, world, spawnReason, pos, random) && validRatSpawn(world,pos);
+
     }
-
-    public static void ratGlow(LivingEntity entity) {
-        if (entity.getType().equals(ModEntities.RAT)) { // Replace MyModEntities.RAT with your entity type
-            // Apply a status effect, for example, Speed for 200 ticks (10 seconds) at amplifier level 1
-            StatusEffectInstance GlowEffect = new StatusEffectInstance(StatusEffects.GLOWING, 500, 1);
-            entity.addStatusEffect(GlowEffect);
-        }
-    }
-
-
-    int skyLightLevel = getWorld().getLightLevel(LightType.SKY, BlockPos.ofFloored(getPos()));
-    int blockLightLevel = getWorld().getLightLevel(LightType.BLOCK, BlockPos.ofFloored(getPos()));
-    int totalLightLevel = getWorld().getLightLevel(BlockPos.ofFloored(getPos()));
-
-    int ratBlockPosX = getWorld().getSpawnPos().getX();
-    int ratBlockPosY = getWorld().getSpawnPos().getY();
-    int ratBlockPosZ = getWorld().getSpawnPos().getZ();
 
     private static int getInternalSkyLightLevel(ServerWorld world, BlockPos pos) {
         // Access the world's light engine directly to fetch internal sky light levels
@@ -269,13 +354,18 @@ public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random 
 
         int ambientdarkness = world.getBaseLightLevel(pos,0);
 
-        // Print the position and light levels
+        // Get the block the rat spawned on
+        BlockPos blockPosBelow = pos.down();
+        BlockState blockStateBelow = world.getBlockState(blockPosBelow);
+        Block blockBelow = blockStateBelow.getBlock();
+
         System.out.println("---------------------------------------------------");
         System.out.println("Rat spawned at position: " + pos);
         System.out.println("Sky Light Level: " + skyLightLevel);
         System.out.println("Block Light Level: " + blockLightLevel);
         System.out.println("Total Light Level: " + totalLightLevel);
         System.out.println("Ambient Darkness: " + ambientdarkness);
+        System.out.println("On Block: " + blockBelow);
         System.out.println("---------------------------------------------------");
 
     }

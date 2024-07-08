@@ -7,5 +7,7 @@ public class ModWorldGeneration {
     public static void generateModWorldGen(){
 
         ModEntitySpawn.addEntitySpawn();
+
+
     }
 }

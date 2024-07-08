@@ -7,6 +7,7 @@ import com.githubtrulytails.kultscultmod.entity.custom.WringEntity;
 import com.githubtrulytails.kultscultmod.items.ModItemGroups;
 import com.githubtrulytails.kultscultmod.items.ModItems;
 import com.githubtrulytails.kultscultmod.util.ModEntityHandler;
+import com.githubtrulytails.kultscultmod.world.gen.ModEntitySpawn;
 import com.githubtrulytails.kultscultmod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
@@ -40,8 +41,9 @@ public class KultsCultMod implements ModInitializer {
 
 		ModEntities.registerModEntities();
 
-		ModWorldGeneration.generateModWorldGen();
+		//ModWorldGeneration.generateModWorldGen();
 
+		ModEntitySpawn.addEntitySpawn();
 
 	}
 	}

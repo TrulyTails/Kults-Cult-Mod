@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 public class ModEntities {
     public static final EntityType<RatEntity> RAT = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(KultsCultMod.MOD_ID, "rat"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RatEntity::new)
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, RatEntity::new)
                     // rat hit box size
                     .dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
 
