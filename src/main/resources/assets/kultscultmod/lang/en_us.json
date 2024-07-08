@@ -3,6 +3,10 @@
   "item.kultscultmod.ritual_dagger": "Ritual Dagger",
   "item.kultscultmod.ritual_shard": "Ritual Shard",
   "item.kultscultmod.rat_spawn_egg": "Rat Spawn Egg",
+  "item.kultscultmod.wring_spawn_egg": "Wring Spawn Egg",
+
+  "entity.kultscultmod.rat": "Rat",
+  "entity.kultscultmod.wring": "Wring",
 
   "itemgroup.kultscultmod": "Kults Cult Mod"
 }
