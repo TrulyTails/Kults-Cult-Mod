@@ -2,6 +2,7 @@ package com.githubtrulytails.kultscultmod;
 
 import com.githubtrulytails.kultscultmod.Blocks.ModBlocks;
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
+import com.githubtrulytails.kultscultmod.entity.custom.CapyEntity;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import com.githubtrulytails.kultscultmod.entity.custom.WringEntity;
 import com.githubtrulytails.kultscultmod.items.ModItemGroups;
@@ -13,9 +14,14 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Heightmap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 // rename class with shift+f6 use caps because class name
@@ -38,11 +44,11 @@ public class KultsCultMod implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ModEntities.RAT, RatEntity.createRatAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.WRING, WringEntity.createWringAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.CAPY, CapyEntity.createCapyAttributes());
 
 		ModEntities.registerModEntities();
 
 		//ModWorldGeneration.generateModWorldGen();
-
 		ModEntitySpawn.addEntitySpawn();
 
 	}

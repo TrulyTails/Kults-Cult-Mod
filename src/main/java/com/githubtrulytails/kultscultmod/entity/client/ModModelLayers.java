@@ -11,4 +11,11 @@ public class ModModelLayers {
 
     public static final EntityModelLayer WRING =
             new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"wring"),"main");
+
+
+    public static final EntityModelLayer CAPY =
+            new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"capy"),"main");
+
+
+
 }

@@ -22,6 +22,9 @@ public static final Item BASIC_ITEM = registerItem("basic_item", new Item(new Fa
  public static final Item RAT_SPAWN_EGG = registerItem("rat_spawn_egg", new SpawnEggItem
         (ModEntities.RAT, 0xa86518, 0x3b260f, new FabricItemSettings()));
 
+public static final Item CAPY_SPAWN_EGG = registerItem("capy_spawn_egg", new SpawnEggItem
+        (ModEntities.CAPY, 0xa84518, 0x2b257f, new FabricItemSettings()));
+
 public static final Item WRING_SPAWN_EGG = registerItem("wring_spawn_egg", new SpawnEggItem
         (ModEntities.WRING, 0xa99918, 0x3b293f, new FabricItemSettings()));
 

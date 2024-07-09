@@ -6,7 +6,7 @@ import net.minecraft.util.StringIdentifiable;
 
 public enum ModSpawnGroup implements StringIdentifiable {
 
-    RATGROUP("rat",25,true,false,150)
+    RATGROUP("rats",25,true,false,150)
 
 
     ;

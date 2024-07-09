@@ -1,6 +1,7 @@
 package com.githubtrulytails.kultscultmod.entity;
 
 import com.githubtrulytails.kultscultmod.KultsCultMod;
+import com.githubtrulytails.kultscultmod.entity.custom.CapyEntity;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import com.githubtrulytails.kultscultmod.entity.custom.WringEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -25,6 +26,13 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, WringEntity::new)
                     //wring hit box
                     .dimensions(EntityDimensions.fixed(3, 3)).build());
+
+
+    public static final EntityType<CapyEntity> CAPY = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(KultsCultMod.MOD_ID, "capy"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CapyEntity::new)
+                    // rat hit box size
+                    .dimensions(EntityDimensions.fixed(1f, 1f)).build());
 
 
     public static void registerModEntities() {

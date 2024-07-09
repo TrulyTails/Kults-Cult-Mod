@@ -36,6 +36,10 @@ public class ModModelProvider extends FabricModelProvider {
                 new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
 
         itemModelGenerator.register(ModItems.WRING_SPAWN_EGG,
+
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+   itemModelGenerator.register(ModItems.CAPY_SPAWN_EGG,
                 new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
 
     }

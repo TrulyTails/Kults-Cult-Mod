@@ -4,9 +4,11 @@
   "item.kultscultmod.ritual_shard": "Ritual Shard",
   "item.kultscultmod.rat_spawn_egg": "Rat Spawn Egg",
   "item.kultscultmod.wring_spawn_egg": "Wring Spawn Egg",
+  "item.kultscultmod.capy_spawn_egg": "Capybara Spawn Egg",
 
   "entity.kultscultmod.rat": "Rat",
   "entity.kultscultmod.wring": "Wring",
+  "entity.kultscultmod.capy": "Capybara",
 
   "itemgroup.kultscultmod": "Kults Cult Mod"
 }

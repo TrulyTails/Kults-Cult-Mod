@@ -8,6 +8,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.JumpControl;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -80,9 +81,6 @@ public class RatEntity extends AnimalEntity {
         super.tick();
         if (this.getWorld().isClient) {
             setupAnimationStates();
-
-            new StatusEffectInstance(StatusEffects.GLOWING, 500, 1);
-
         }
     }
 
@@ -95,6 +93,7 @@ public class RatEntity extends AnimalEntity {
         this.goalSelector.add(2, new TemptGoal(this, 1.5, Ingredient.ofItems(Items.ROTTEN_FLESH), false));
         this.goalSelector.add(3, new AnimalMateGoal(this, 1.5D));
         this.goalSelector.add(3, new FollowParentGoal(this, 1.15D));
+
 
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 1D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
@@ -226,6 +225,10 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return isNightTime;
     }
 
+    public static boolean reduceSpawnRate(ServerWorldAccess world, BlockPos pos, Random random){
+        return 90 > random.nextInt(100);
+    }
+
     public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
         // Check sky light level. Sky light will always be 15. Change random int, lower means higher chance of spawning.
         int blockLightLevel = world.getLightLevel(LightType.BLOCK, pos);
@@ -313,18 +316,20 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
                                             SpawnReason spawnReason,
                                             BlockPos pos, net.minecraft.util.math.random.Random random) {
 
+        boolean rate = reduceSpawnRate(world, pos, random);
         boolean darkenough = isSpawnDark(world, pos, random);
-        boolean validRatSpawn = validRatSpawn( world, pos);
-        BlockPos blockPos = pos.down();
+        boolean vrs = validRatSpawn( world, pos);
+        boolean reason = ratCanMobSpawn(type,world,spawnReason,pos,random);
 
-
+       /* BlockPos blockPos = pos.down();
         BlockPos blockPosBelow = pos.down();
         BlockState blockStateBelow = world.getBlockState(blockPosBelow);
         Block blockBelow = blockStateBelow.getBlock();
-        //      use to output block and light checks
-       // System.out.println("Checking rat spawn on " + blockBelow + " at: "+pos+ " isDark=" + darkenough + ", canSpawnOnBlock=" + validRatSpawn + " Has reason: " + spawnReason);
+        System.out.println
+         ("Checking rat spawn on " + blockBelow + " at: "+pos+ " isDark=" + darkenough + ", canSpawnOnBlock=" + validRatSpawn + " Has reason: " + spawnReason);
+        */
 
-        return isSpawnDark(world, pos, random) &&  ratCanMobSpawn(type, world, spawnReason, pos, random) && validRatSpawn(world,pos);
+        return rate && darkenough && vrs && reason;
 
     }
 
@@ -338,6 +343,7 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
     public void onSpawnPacket(EntitySpawnS2CPacket packet) {
         super.onSpawnPacket(packet);
 
+        /*
         // Retrieve the position from the packet
         int x = (int) packet.getX();
         int y = (int) packet.getY();
@@ -367,7 +373,7 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
         System.out.println("Ambient Darkness: " + ambientdarkness);
         System.out.println("On Block: " + blockBelow);
         System.out.println("---------------------------------------------------");
-
+*/
     }
 
 

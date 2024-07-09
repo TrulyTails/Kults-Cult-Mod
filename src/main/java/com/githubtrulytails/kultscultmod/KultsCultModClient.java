@@ -2,6 +2,8 @@ package com.githubtrulytails.kultscultmod;
 
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.entity.client.ModModelLayers;
+import com.githubtrulytails.kultscultmod.entity.client.capy.CapyModel;
+import com.githubtrulytails.kultscultmod.entity.client.capy.CapyRenderer;
 import com.githubtrulytails.kultscultmod.entity.client.rat.RatModel;
 import com.githubtrulytails.kultscultmod.entity.client.rat.RatRenderer;
 import com.githubtrulytails.kultscultmod.entity.client.wring.WringModel;
@@ -20,6 +22,9 @@ public class KultsCultModClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(ModEntities.WRING, WringRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WRING, WringModel::getTexturedModelData);
+
+ EntityRendererRegistry.register(ModEntities.CAPY, CapyRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CAPY, CapyModel::getTexturedModelData);
 
 
 
