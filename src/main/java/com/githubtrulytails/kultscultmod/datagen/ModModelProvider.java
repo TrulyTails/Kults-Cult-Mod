@@ -28,6 +28,7 @@ public class ModModelProvider extends FabricModelProvider {
         //for basic held items (not the tools model)
         itemModelGenerator.register(ModItems.FOLLOWER_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.RITUAL_SHARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PLAGUE_ITEM, Models.GENERATED);
 
         //for tools
         itemModelGenerator.register(ModItems.RITUAL_DAGGER, Models.HANDHELD);

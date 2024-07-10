@@ -20,6 +20,7 @@ public class ModItemGroups {
                         //adds items to creative tab
                         entries.add(ModItems.FOLLOWER_SHARD);
                         entries.add(ModItems.RITUAL_SHARD);
+                        entries.add(ModItems.PLAGUE_ITEM);
 
                         entries.add(ModItems.RITUAL_DAGGER);
 

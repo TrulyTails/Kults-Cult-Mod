@@ -126,9 +126,6 @@ public class WringEntity extends HostileEntity {
     public void onDeath(DamageSource damageSource) {
         super.onDeath(damageSource);
         this.playSound(SoundEvents.ENTITY_ELDER_GUARDIAN_DEATH,1f,1f);
-
-        this.dropItem(Items.STICK);
-
     }
 
     public boolean isAngryAt(PlayerEntity player) {

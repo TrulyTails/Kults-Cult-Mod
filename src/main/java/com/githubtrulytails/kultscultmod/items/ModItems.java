@@ -3,6 +3,7 @@ package com.githubtrulytails.kultscultmod.items;
 import com.githubtrulytails.kultscultmod.KultsCultMod;
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.items.item_classes.FollowerShard;
+import com.githubtrulytails.kultscultmod.items.item_classes.PlagueItem;
 import com.githubtrulytails.kultscultmod.items.item_classes.RitualBladeItem;
 import com.githubtrulytails.kultscultmod.items.item_classes.RitualShard;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -28,11 +29,14 @@ public static final Item CAPY_SPAWN_EGG = registerItem("capy_spawn_egg", new Spa
 public static final Item WRING_SPAWN_EGG = registerItem("wring_spawn_egg", new SpawnEggItem
         (ModEntities.WRING, 0xa99918, 0x3b293f, new FabricItemSettings()));
 
-//register class item (please just use this for all items inside of KCM.
+//register class item (please just use this for all items inside KCM.
     public static final Item FOLLOWER_SHARD = registerItem("follower_shard", new FollowerShard
             (new FabricItemSettings()));
 
-public static final Item RITUAL_SHARD = registerItem("ritual_shard", new RitualShard
+    public static final Item RITUAL_SHARD = registerItem("ritual_shard", new RitualShard
+            (new FabricItemSettings()));
+
+ public static final Item PLAGUE_ITEM = registerItem("plague_item", new PlagueItem
             (new FabricItemSettings()));
 
 
