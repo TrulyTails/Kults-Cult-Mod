@@ -22,6 +22,15 @@ public class ModItemGroups {
                         entries.add(ModItems.RITUAL_SHARD);
                         entries.add(ModItems.PLAGUE_ITEM);
 
+                        entries.add(ModItems.COPPER_CORE);
+                        entries.add(ModItems.IRON_CORE);
+                        entries.add(ModItems.GOLD_CORE);
+                        entries.add(ModItems.DIAMOND_CORE);
+                        entries.add(ModItems.EMERALD_CORE);
+                        entries.add(ModItems.AMETHYST_CORE);
+                        entries.add(ModItems.QUARTZ_CORE);
+                        entries.add(ModItems.NETHERITE_CORE);
+
                         entries.add(ModItems.RITUAL_DAGGER);
 
 

@@ -1,8 +1,16 @@
-// 1.20.4	2024-07-10T14:13:12.657975	Kults Cult Mod/Model Definitions
-1fe37b52591b41af6bc9c30c9f5464ad2b2f154c assets\kultscultmod\models\item\plague_item.json
+// 1.20.4	2025-01-16T20:36:52.2335838	Kults Cult Mod/Model Definitions
 768b7b56af1c2c858bd58db9ef39a5c72d8cb142 assets\kultscultmod\models\item\follower_shard.json
 3701ba3711a181a8eccda70087ccd5cd45534714 assets\kultscultmod\models\item\ritual_shard.json
+a0f70d4f8592c3d129305d672e64a757a4c414fd assets\kultscultmod\models\item\amethyst_core.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\kultscultmod\models\item\rat_spawn_egg.json
+b16330f761b1b280577fbca86c8488815b0eac8e assets\kultscultmod\models\item\netherite_core.json
+9e723dc9100d76cb9306acf76bbbd606cc0d1588 assets\kultscultmod\models\item\diamond_core.json
+dfcf0c4bcc712dca22394cb27ee91848b375ffe6 assets\kultscultmod\models\item\iron_core.json
+1fe37b52591b41af6bc9c30c9f5464ad2b2f154c assets\kultscultmod\models\item\plague_item.json
+11a13208171ef742c836dd91478cb322e7bae50a assets\kultscultmod\models\item\emerald_core.json
+2d89597c3675e8cebd44ad0227282f0599f4afb3 assets\kultscultmod\models\item\quartz_core.json
+222ddb70e3d070c57f0a8019705b0c2704a015fe assets\kultscultmod\models\item\copper_core.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\kultscultmod\models\item\capy_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\kultscultmod\models\item\wring_spawn_egg.json
+afe6660e9e1c1befc922082ee717dfa63929c800 assets\kultscultmod\models\item\gold_core.json
 c7b328969ab6fad93275fb47facff47234880b48 assets\kultscultmod\models\item\ritual_dagger.json

@@ -36,6 +36,17 @@ public static final Item WRING_SPAWN_EGG = registerItem("wring_spawn_egg", new S
     public static final Item RITUAL_SHARD = registerItem("ritual_shard", new RitualShard
             (new FabricItemSettings()));
 
+
+    public static final Item COPPER_CORE = registerItem("copper_core", new Item(new FabricItemSettings()));
+    public static final Item IRON_CORE = registerItem("iron_core", new Item(new FabricItemSettings()));
+    public static final Item GOLD_CORE = registerItem("gold_core", new Item(new FabricItemSettings()));
+    public static final Item DIAMOND_CORE = registerItem("diamond_core", new Item(new FabricItemSettings()));
+    public static final Item AMETHYST_CORE = registerItem("amethyst_core", new Item(new FabricItemSettings()));
+    public static final Item EMERALD_CORE = registerItem("emerald_core", new Item(new FabricItemSettings()));
+    public static final Item QUARTZ_CORE = registerItem("quartz_core", new Item(new FabricItemSettings()));
+    public static final Item NETHERITE_CORE = registerItem("netherite_core", new Item(new FabricItemSettings()));
+
+
  public static final Item PLAGUE_ITEM = registerItem("plague_item", new PlagueItem
             (new FabricItemSettings()));
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "quartz core",
+  "ingredients": [
+    {
+      "item": "kultscultmod:ritual_shard"
+    },
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "result": {
+    "item": "kultscultmod:quartz_core"
+  }
+}

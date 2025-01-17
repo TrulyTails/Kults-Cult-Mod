@@ -62,7 +62,7 @@ public class WringEntity extends HostileEntity {
 
     public static DefaultAttributeContainer.Builder createWringAttributes(){
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH,50)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20F)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15F)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE,7)
                 .add(EntityAttributes.GENERIC_ARMOR,2)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED,3)

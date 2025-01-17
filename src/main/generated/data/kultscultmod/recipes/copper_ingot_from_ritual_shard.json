@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "copper core",
+  "ingredients": [
+    {
+      "item": "kultscultmod:ritual_shard"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "result": {
+    "item": "kultscultmod:copper_core"
+  }
+}

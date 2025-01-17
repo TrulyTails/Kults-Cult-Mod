@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "diamond core",
+  "ingredients": [
+    {
+      "item": "kultscultmod:ritual_shard"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ],
+  "result": {
+    "item": "kultscultmod:diamond_core"
+  }
+}

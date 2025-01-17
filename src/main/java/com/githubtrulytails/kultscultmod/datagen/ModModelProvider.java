@@ -29,6 +29,15 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FOLLOWER_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.RITUAL_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.PLAGUE_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COPPER_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.IRON_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GOLD_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMETHYST_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIAMOND_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMERALD_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.QUARTZ_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NETHERITE_CORE, Models.GENERATED);
+
 
         //for tools
         itemModelGenerator.register(ModItems.RITUAL_DAGGER, Models.HANDHELD);

@@ -109,7 +109,7 @@ public class RatEntity extends AnimalEntity {
 
     public static DefaultAttributeContainer.Builder createRatAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7F)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.45F)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3)
                 .add(EntityAttributes.GENERIC_ARMOR, 0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 6)

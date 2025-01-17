@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "gold core",
+  "ingredients": [
+    {
+      "item": "kultscultmod:ritual_shard"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "result": {
+    "item": "kultscultmod:gold_core"
+  }
+}

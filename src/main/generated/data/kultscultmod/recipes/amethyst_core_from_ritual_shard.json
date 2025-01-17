@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "amethyst core",
+  "ingredients": [
+    {
+      "item": "kultscultmod:ritual_shard"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "result": {
+    "item": "kultscultmod:amethyst_core"
+  }
+}
