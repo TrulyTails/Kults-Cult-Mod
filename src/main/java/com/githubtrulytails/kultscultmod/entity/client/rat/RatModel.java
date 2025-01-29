@@ -18,6 +18,7 @@ public class RatModel<T extends RatEntity> extends SinglePartEntityModel<T> {
 		this.head = rat.getChild("body").getChild("tail");
 
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();

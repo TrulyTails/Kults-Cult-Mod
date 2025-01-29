@@ -88,6 +88,16 @@ public class CapyModel<T extends CapyEntity>  extends SinglePartEntityModel<T> {
 	}
 
 	@Override
+	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+		capy_entity.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+	}
+
+	@Override
+	public ModelPart getPart() {
+		return capy_entity;
+	}
+
+	@Override
 	public void setAngles(CapyEntity entity,float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 		this.setHeadAngles(netHeadYaw,headPitch);
@@ -104,16 +114,5 @@ public class CapyModel<T extends CapyEntity>  extends SinglePartEntityModel<T> {
 		this.head.yaw = headYaw * 0.017453292F;
 		this.head.pitch = headPitch * 0.017453292F;
 	}
-
-	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		capy_entity.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-	}
-
-	@Override
-	public ModelPart getPart() {
-		return capy_entity;
-	}
-
 
 }

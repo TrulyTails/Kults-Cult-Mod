@@ -17,5 +17,9 @@ public class ModModelLayers {
             new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"capy"),"main");
 
 
+    public static final EntityModelLayer MINI =
+            new EntityModelLayer(new Identifier(KultsCultMod.MOD_ID,"mini"),"main");
+
+
 
 }

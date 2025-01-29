@@ -45,6 +45,8 @@ public class KultsCultMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.RAT, RatEntity.createRatAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.WRING, WringEntity.createWringAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.CAPY, CapyEntity.createCapyAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.MINI, CapyEntity.createCapyAttributes());
+
 
 		ModEntities.registerModEntities();
 

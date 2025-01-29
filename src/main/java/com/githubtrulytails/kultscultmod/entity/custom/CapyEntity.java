@@ -172,6 +172,8 @@ public class CapyEntity extends AnimalEntity {
         return 1.0F;
     }
 
+/*
+
     @Override
     public void onSpawnPacket(EntitySpawnS2CPacket packet) {
         super.onSpawnPacket(packet);
@@ -192,7 +194,11 @@ public class CapyEntity extends AnimalEntity {
 
         int ambientdarkness = world.getBaseLightLevel(pos,0);
 
+
+
+
         // Get the block the rat spawned on
+
         BlockPos blockPosBelow = pos.down();
         BlockState blockStateBelow = world.getBlockState(blockPosBelow);
         Block blockBelow = blockStateBelow.getBlock();
@@ -207,7 +213,7 @@ public class CapyEntity extends AnimalEntity {
         System.out.println("---------------------------------------------------");
 
     }
-
+*/
 
 
 }
