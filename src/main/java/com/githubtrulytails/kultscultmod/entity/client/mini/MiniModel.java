@@ -1,5 +1,7 @@
 package com.githubtrulytails.kultscultmod.entity.client.mini;
 
+import com.githubtrulytails.kultscultmod.entity.animation.CapyAnimations;
+import com.githubtrulytails.kultscultmod.entity.animation.MiniAnimations;
 import com.githubtrulytails.kultscultmod.entity.custom.MinithulusEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -13,11 +15,11 @@ import net.minecraft.entity.Entity;
 // Paste this class into your mod and generate all required imports
 public class MiniModel<T extends MinithulusEntity> extends SinglePartEntityModel<T> {
     private final ModelPart mini_entity;
-    private final ModelPart head;
+    private final ModelPart Head;
 
     public MiniModel(ModelPart root) {
         this.mini_entity = root.getChild("mini_entity");
-        this.head = this.mini_entity.getChild("head");
+        this.Head = this.mini_entity.getChild("Head");
 
     }
     public static TexturedModelData getTexturedModelData() {
@@ -25,11 +27,11 @@ public class MiniModel<T extends MinithulusEntity> extends SinglePartEntityModel
         ModelPartData modelPartData = modelData.getRoot();
         ModelPartData mini_entity = modelPartData.addChild("mini_entity", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-        ModelPartData head = mini_entity.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.95F, -4.0F, 6.0F, 4.0F, 5.0F, new Dilation(0.0F)), ModelTransform.pivot(0.5F, -0.05F, 3.7F));
+        ModelPartData Head = mini_entity.addChild("Head", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.95F, -4.0F, 6.0F, 4.0F, 5.0F, new Dilation(0.0F)), ModelTransform.pivot(0.5F, -0.05F, 3.7F));
 
-        ModelPartData Head_r1 = head.addChild("Head_r1", ModelPartBuilder.create().uv(0, 17).cuboid(-2.0F, -2.0F, -4.0F, 4.0F, 2.0F, 5.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -0.2F, -3.2F, 0.0436F, 0.0F, 0.0F));
+        ModelPartData Head_r1 = Head.addChild("Head_r1", ModelPartBuilder.create().uv(0, 17).cuboid(-2.0F, -2.0F, -4.0F, 4.0F, 2.0F, 5.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -0.2F, -3.2F, 0.0436F, 0.0F, 0.0F));
 
-        ModelPartData Head_r2 = head.addChild("Head_r2", ModelPartBuilder.create().uv(0, 9).cuboid(-2.0F, -3.0F, -3.0F, 5.0F, 3.0F, 5.0F, new Dilation(0.0F)), ModelTransform.of(-0.5F, -0.2F, -3.7F, 0.0436F, 0.0F, 0.0F));
+        ModelPartData Head_r2 = Head.addChild("Head_r2", ModelPartBuilder.create().uv(0, 9).cuboid(-2.0F, -3.0F, -3.0F, 5.0F, 3.0F, 5.0F, new Dilation(0.0F)), ModelTransform.of(-0.5F, -0.2F, -3.7F, 0.0436F, 0.0F, 0.0F));
 
         ModelPartData eyes = mini_entity.addChild("eyes", ModelPartBuilder.create(), ModelTransform.pivot(2.6F, -2.85F, -2.3F));
 
@@ -106,7 +108,10 @@ public class MiniModel<T extends MinithulusEntity> extends SinglePartEntityModel
     }
 
     @Override
-    public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(MinithulusEntity entity,float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        
+        this.getPart().traverse().forEach(ModelPart::resetTransform);
+        this.updateAnimation(entity.idleAnimationState, MiniAnimations.MINI_IDLE, ageInTicks, 1f);
 
     }
 }

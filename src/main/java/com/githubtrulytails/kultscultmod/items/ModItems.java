@@ -29,7 +29,10 @@ public static final Item CAPY_SPAWN_EGG = registerItem("capy_spawn_egg", new Spa
 public static final Item WRING_SPAWN_EGG = registerItem("wring_spawn_egg", new SpawnEggItem
         (ModEntities.WRING, 0xa99918, 0x3b293f, new FabricItemSettings()));
 
-//register class item (please just use this for all items inside KCM.
+public static final Item MINITHULUS_SPAWN_EGG = registerItem("minithulus_spawn_egg", new SpawnEggItem
+        (ModEntities.MINI, 0x455c46, 0x1d2d1e, new FabricItemSettings()));
+
+//register class item please just use this for all items inside KCM.
     public static final Item FOLLOWER_SHARD = registerItem("follower_shard", new FollowerShard
             (new FabricItemSettings()));
 
@@ -45,6 +48,9 @@ public static final Item WRING_SPAWN_EGG = registerItem("wring_spawn_egg", new S
     public static final Item EMERALD_CORE = registerItem("emerald_core", new Item(new FabricItemSettings()));
     public static final Item QUARTZ_CORE = registerItem("quartz_core", new Item(new FabricItemSettings()));
     public static final Item NETHERITE_CORE = registerItem("netherite_core", new Item(new FabricItemSettings()));
+
+
+    public static final Item MINITHULUS_TENTACLE = registerItem("minithulus_tentacle", new Item(new FabricItemSettings()));
 
 
  public static final Item PLAGUE_ITEM = registerItem("plague_item", new PlagueItem

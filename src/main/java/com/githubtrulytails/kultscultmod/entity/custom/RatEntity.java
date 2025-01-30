@@ -311,9 +311,7 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
 
 
     // what gets called in ModEntitySpawn
-    public static boolean ratSpawnMechanics(EntityType<? extends RatEntity> type,
-                                            ServerWorldAccess world,
-                                            SpawnReason spawnReason,
+    public static boolean ratSpawnMechanics(EntityType<? extends RatEntity> type, ServerWorldAccess world, SpawnReason spawnReason,
                                             BlockPos pos, net.minecraft.util.math.random.Random random) {
 
         boolean rate = reduceSpawnRate(world, pos, random);
@@ -328,7 +326,6 @@ public float getPathfindingFavor(BlockPos pos, WorldView world) {
         System.out.println
          ("Checking rat spawn on " + blockBelow + " at: "+pos+ " isDark=" + darkenough + ", canSpawnOnBlock=" + validRatSpawn + " Has reason: " + spawnReason);
         */
-
         return rate && darkenough && vrs && reason;
 
     }

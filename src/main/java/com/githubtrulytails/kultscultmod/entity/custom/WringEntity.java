@@ -20,7 +20,9 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class WringEntity extends HostileEntity {
@@ -132,4 +134,9 @@ public class WringEntity extends HostileEntity {
         return true;
     }
 
-}
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return 1.0F;
+    }
+
+    }

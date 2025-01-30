@@ -2,6 +2,7 @@ package com.githubtrulytails.kultscultmod.world.gen;
 
 import com.githubtrulytails.kultscultmod.entity.ModEntities;
 import com.githubtrulytails.kultscultmod.entity.custom.CapyEntity;
+import com.githubtrulytails.kultscultmod.entity.custom.MinithulusEntity;
 import com.githubtrulytails.kultscultmod.entity.custom.RatAnimal;
 import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import com.githubtrulytails.kultscultmod.util.ModSpawnGroup;
@@ -14,14 +15,19 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 
 public class ModEntitySpawn {
 
     public static void addEntitySpawn  (){
 
+      //  BiomeModifications.addSpawn(BiomeSelectors.all(), SpawnGroup.MONSTER,
+      //         ModEntities.WRING, 5, 1, 1);
+
         BiomeModifications.addSpawn(BiomeSelectors.all(), SpawnGroup.MONSTER,
-                ModEntities.WRING, 5, 1, 1);
+                ModEntities.MINI, 30, 1, 1);
+
 
         //Using monster will impact hostile mob spawn rates. Look into making a custom spawn group later.
         // Apparently it also dictates spawn conditions. Creature cannot spawn below a light level of 9. Rats need 7 or lower atm.
@@ -92,8 +98,11 @@ public class ModEntitySpawn {
         SpawnRestriction.register(ModEntities.WRING, SpawnRestriction.Location.NO_RESTRICTIONS,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
 
-         SpawnRestriction.register(ModEntities.CAPY, SpawnRestriction.Location.NO_RESTRICTIONS,
+        SpawnRestriction.register(ModEntities.CAPY, SpawnRestriction.Location.NO_RESTRICTIONS,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CapyEntity::capySpawnMechanics);
+
+        SpawnRestriction.register(ModEntities.MINI, SpawnRestriction.Location.NO_RESTRICTIONS,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MinithulusEntity::miniSpawnMechanics);
 
 
     }

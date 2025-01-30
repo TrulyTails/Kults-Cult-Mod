@@ -40,7 +40,8 @@ public class ModEntities {
     public static final EntityType<MinithulusEntity> MINI = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(KultsCultMod.MOD_ID, "mini"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MinithulusEntity::new)
-            .dimensions(EntityDimensions.fixed(1f,1f)).build());
+                    // hit box size
+                    .dimensions(EntityDimensions.fixed(0.5f,0.5f)).build());
 
 
 

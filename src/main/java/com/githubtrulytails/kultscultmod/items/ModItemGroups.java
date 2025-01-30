@@ -17,26 +17,33 @@ public class ModItemGroups {
             new Identifier(KultsCultMod.MOD_ID, "kultscultmod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.kultscultmod"))
                     .icon(()->new ItemStack(Items.DIAMOND)).entries((displayContext, entries) -> {
-                        //adds items to creative tab
-                        entries.add(ModItems.FOLLOWER_SHARD);
-                        entries.add(ModItems.RITUAL_SHARD);
-                        entries.add(ModItems.PLAGUE_ITEM);
+                        //adds items to creative tab. This order matters for in-game listing order.
 
-                        entries.add(ModItems.COPPER_CORE);
-                        entries.add(ModItems.IRON_CORE);
-                        entries.add(ModItems.GOLD_CORE);
-                        entries.add(ModItems.DIAMOND_CORE);
-                        entries.add(ModItems.EMERALD_CORE);
-                        entries.add(ModItems.AMETHYST_CORE);
-                        entries.add(ModItems.QUARTZ_CORE);
-                        entries.add(ModItems.NETHERITE_CORE);
+                //misc
+                    entries.add(ModItems.FOLLOWER_SHARD);
+                    entries.add(ModItems.RITUAL_SHARD);
+                    entries.add(ModItems.PLAGUE_ITEM);
+                    entries.add(ModItems.MINITHULUS_TENTACLE);
 
-                        entries.add(ModItems.RITUAL_DAGGER);
+                //cores
+                    entries.add(ModItems.COPPER_CORE);
+                    entries.add(ModItems.IRON_CORE);
+                    entries.add(ModItems.GOLD_CORE);
+                    entries.add(ModItems.DIAMOND_CORE);
+                    entries.add(ModItems.EMERALD_CORE);
+                    entries.add(ModItems.AMETHYST_CORE);
+                    entries.add(ModItems.QUARTZ_CORE);
+                    entries.add(ModItems.NETHERITE_CORE);
 
+                //weapons
+                    entries.add(ModItems.RITUAL_DAGGER);
 
-                       entries.add(ModItems.RAT_SPAWN_EGG);
-                       entries.add(ModItems.WRING_SPAWN_EGG);
-                       entries.add(ModItems.CAPY_SPAWN_EGG);
+                //eggs
+                    entries.add(ModItems.MINITHULUS_SPAWN_EGG);
+                    entries.add(ModItems.RAT_SPAWN_EGG);
+                    entries.add(ModItems.WRING_SPAWN_EGG);
+                    entries.add(ModItems.CAPY_SPAWN_EGG);
+
                     }).build());
 
     public static void registerItemGroups(){

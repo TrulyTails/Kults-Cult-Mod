@@ -3,15 +3,28 @@
   "item.kultscultmod.ritual_dagger": "Ritual Dagger",
   "item.kultscultmod.ritual_shard": "Ritual Shard",
   "item.kultscultmod.plague_item": "The Plague",
+  "item.kultscultmod.minithulus_tentacle": "Minithulus Tentacle",
+  "item.kultscultmod.copper_core": "Copper Core",
+  "item.kultscultmod.iron_core": "Copper Core",
+  "item.kultscultmod.gold_core": "Gold Core",
+  "item.kultscultmod.diamond_core": "Diamond Core",
+  "item.kultscultmod.amethyst_core": "Amethyst Core",
+  "item.kultscultmod.emerald_core": "Emerald Core",
+  "item.kultscultmod.quartz_core": "Quartz Core",
+  "item.kultscultmod.netherite_core": "Netherite Core",
 
+
+  "itemTooltip.test": "test line",
 
   "item.kultscultmod.rat_spawn_egg": "Rat Spawn Egg",
   "item.kultscultmod.wring_spawn_egg": "Wring Spawn Egg",
   "item.kultscultmod.capy_spawn_egg": "Capybara Spawn Egg",
+  "item.kultscultmod.minithulus_spawn_egg": "Minithulus Spawn Egg",
 
   "entity.kultscultmod.rat": "Rat",
   "entity.kultscultmod.wring": "Wring",
   "entity.kultscultmod.capy": "Capybara",
+  "entity.kultscultmod.mini": "Minithulus",
 
   "itemgroup.kultscultmod": "Kults Cult Mod"
 }
