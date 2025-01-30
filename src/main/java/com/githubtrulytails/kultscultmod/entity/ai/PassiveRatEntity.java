@@ -1,5 +1,6 @@
 package com.githubtrulytails.kultscultmod.entity.ai;
 
+import com.githubtrulytails.kultscultmod.entity.custom.RatEntity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

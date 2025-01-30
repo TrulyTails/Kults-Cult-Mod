@@ -1,5 +1,6 @@
 package com.githubtrulytails.kultscultmod.entity.custom;
 
+import com.githubtrulytails.kultscultmod.entity.ai.MiniAttackGoal;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AnimationState;
@@ -46,16 +47,13 @@ public class MinithulusEntity extends HostileEntity {
 
     @Override
     protected void initGoals() {
-        // uses the attack logic that the Wring has. The logic is specific to the WringEntity there for will not work
-        // All we have to do is remake the logic tied to the MinithulusEntity
-        // this.goalSelector.add(1, new WringAttackGoal(this,1d,true));
+        this.goalSelector.add(1, new MiniAttackGoal(this,3d,false));
         this.goalSelector.add(1, new WanderAroundFarGoal(this, 3D));
-        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
+        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 10f));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.goalSelector.add(4, new SwimGoal(this));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.jumpControl = new JumpControl(this);
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
 
     }
 
@@ -63,7 +61,7 @@ public class MinithulusEntity extends HostileEntity {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 30)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15F)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 10)
                 .add(EntityAttributes.GENERIC_ARMOR, 4)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 4)
                 ;

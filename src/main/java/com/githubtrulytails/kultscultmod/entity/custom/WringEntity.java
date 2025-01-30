@@ -1,5 +1,6 @@
 package com.githubtrulytails.kultscultmod.entity.custom;
 
+import com.githubtrulytails.kultscultmod.entity.ai.MiniAttackGoal;
 import com.githubtrulytails.kultscultmod.entity.ai.RatAttackGoal;
 import com.githubtrulytails.kultscultmod.entity.ai.WringAttackGoal;
 import net.minecraft.entity.AnimationState;
@@ -75,7 +76,7 @@ public class WringEntity extends HostileEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new WringAttackGoal(this,1d,true));
+        this.goalSelector.add(1, new MiniAttackGoal(this,0.15d,true));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 3D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
         this.goalSelector.add(6, new LookAroundGoal(this));
